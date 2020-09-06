@@ -38,7 +38,7 @@ sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo Set-Acl \$authorizedKeyP
 
 
 echo "## exe change acl script"
-sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "\"powershell ${ssh_dir}\create_ch_acl.ps1\""
+sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "powershell ${ssh_dir}\create_ch_acl.ps1"
 
 echo "## delete acl script"
-sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "\"del /Q ${ssh_dir}\create_ch_acl.ps1\""
+sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "del /Q ${ssh_dir}\create_ch_acl.ps1"
