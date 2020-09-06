@@ -31,11 +31,11 @@ sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo ${sshkey} >> C:\Users\\$
 
 echo "## create change acl script"
 sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "type nul > C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1"
-sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} 'echo $authorizedKeyPath = "C:\users\\${vm_user}\.ssh\authorized_keys" >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1'
-sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} 'echo $acl = Get-Acl $authorizedKeyPath >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1'
-sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} 'echo $ar = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\sshd", "Read", "Allow") >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1'
-sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} 'echo $acl.SetAccessRule($ar) >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1'
-sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} 'echo Set-Acl $authorizedKeyPath $acl >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1'
+sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo \$authorizedKeyPath = \"C:\users\\${vm_user}\.ssh\authorized_keys\" >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1"
+sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo \$acl = Get-Acl \$authorizedKeyPath >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1"
+sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo \$ar = New-Object System.Security.AccessControl.FileSystemAccessRule(\"NT Service\sshd\", \"Read\", \"Allow\") >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1"
+sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo \$acl.SetAccessRule(\$ar) >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1"
+sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo Set-Acl \$authorizedKeyPath \$acl >> C:\Users\\${vm_user}\.ssh\create_ch_acl.ps1"
 
 
 echo "## exe change acl script"
