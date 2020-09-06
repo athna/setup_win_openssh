@@ -30,7 +30,7 @@ sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo ${sshkey} >> ${ssh_dir}\
 
 echo "## create change acl script"
 sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "type nul > ${ssh_dir}\create_ch_acl.ps1"
-sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo \$authorizedKeyPath = ${ssh_dir}\\authorized_keys >> ${ssh_dir}\create_ch_acl.ps1"
+sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo \$authorizedKeyPath = \"${ssh_dir}\\authorized_keys\" >> ${ssh_dir}\create_ch_acl.ps1"
 sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo \$acl = Get-Acl \$authorizedKeyPath >> ${ssh_dir}\create_ch_acl.ps1"
 sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo \$ar = New-Object System.Security.AccessControl.FileSystemAccessRule(\"NT Service\\sshd\", \"Read\", \"Allow\") >> ${ssh_dir}\\create_ch_acl.ps1"
 sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "echo \$acl.SetAccessRule(\$ar) >> ${ssh_dir}\\create_ch_acl.ps1"
