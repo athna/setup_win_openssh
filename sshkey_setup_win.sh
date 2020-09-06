@@ -8,7 +8,6 @@ ssh_dir="C:\Users\\${vm_user}\.ssh"
 dir_exist=`sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "\"powershell Test-Path ${ssh_dir}\""`
 if [ $(echo "$dir_exist" | grep -e 'True') ]; then
     echo "## .ssh directory exist"
-    :
 else
     echo "## .ssh directory not exist. make .ssh"
     sshpass -p ${vm_passwd} ssh ${vm_user}@${vm_addr} "\"mkdir ${ssh_dir}\""
